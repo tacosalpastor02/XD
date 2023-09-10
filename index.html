@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambiar Color RGB</title>
-    <!-- Enlace al archivo CSS de Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Cambio de Color en RGB</title>
+    <!-- Agrega el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Estilo para el div */
         #miDiv {
             width: 100px;
             height: 100px;
-            background-color: rgb(0, 0, 0);
+            background-color: rgb(255, 0, 0); /* Color inicial (rojo) */
+            margin-top: 20px;
+        }
+        /* Estilo personalizado para el pie de página */
+        footer {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <!-- Encabezado (Header) con Navbar -->
-    <header class="bg-danger text-white">
-        <nav class="navbar navbar-expand-lg container">
-            <a class="navbar-brand" href="#">Mi Sitio Web</a>
+    <!-- Encabezado con barra de navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+        >
+            <a class="navbar-brand" href="#">Mi Página Web</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Acerca de</a>
@@ -39,60 +46,52 @@
         </nav>
     </header>
 
-    <div class="container mt-5">
-        <!-- Título -->
-        <h1 class="mb-4">Cambia el Color RGB</h1>
-        
-        <div class="mb-4">
-            <div id="miDiv" class="mb-3"></div>
-            <div class="row">
-                <div class="col">
-                    <label for="red" class="form-label">Rojo:</label>
-                    <input type="range" class="form-range" id="red" min="0" max="255">
-                </div>
-                <div class="col">
-                    <label for="green" class="form-label">Verde:</label>
-                    <input type="range" class="form-range" id="green" min="0" max="255">
-                </div>
-                <div class="col">
-                    <label for="blue" class="form-label">Azul:</label>
-                    <input type="range" class="form-range" id="blue" min="0" max="255">
-                </div>
-            </div>
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1 class="mt-4">Cambiar Tonalidad de Color en RGB</h1>
+        <div id="miDiv" class="mb-4"></div>
+        <div class="form-group">
+            <label for="red">Rojo:</label>
+            <input type="range" class="form-control" id="red" min="0" max="255" value="255">
+        </div>
+        <div class="form-group">
+            <label for="green">Verde:</label>
+            <input type="range" class="form-control" id="green" min="0" max="255" value="0">
+        </div>
+        <div class="form-group">
+            <label for="blue">Azul:</label>
+            <input type="range" class="form-control" id="blue" min="0" max="255" value="0">
         </div>
     </div>
 
-    <!-- Pie de página (Footer) -->
-    <footer class="bg-primary text-white text-center py-3 mb-15">
-        &copy; 2023 VAL NaMo. Todos los derechos reservados.
+    <!-- Pie de página -->
+    <footer>
+        <div class=""p-3 mb-2 bg-primary text-white>.bg-primary</div>
+        <p>&copy; 2023 Hecho por Andrew Josue Vazquez - Todos los derechos reservados</p>
     </footer>
 
-    <!-- Scripts de Bootstrap y JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Obtener referencias a los controles
-        const redSlider = document.getElementById('red');
-        const greenSlider = document.getElementById('green');
-        const blueSlider = document.getElementById('blue');
-        const miDiv = document.getElementById('miDiv');
+    <!-- Agrega los enlaces a Bootstrap JS y jQuery al final del body para que funcione correctamente -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        // Función para actualizar el color del div
+    <script>
+        const redSlider = document.getElementById("red");
+        const greenSlider = document.getElementById("green");
+        const blueSlider = document.getElementById("blue");
+        const miDiv = document.getElementById("miDiv");
+
+        redSlider.addEventListener("input", actualizarColor);
+        greenSlider.addEventListener("input", actualizarColor);
+        blueSlider.addEventListener("input", actualizarColor);
+
         function actualizarColor() {
             const redValue = redSlider.value;
             const greenValue = greenSlider.value;
             const blueValue = blueSlider.value;
-
-            // Actualizar el color de fondo del div con los valores RGB
+            
             miDiv.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
         }
-
-        // Agregar eventos para escuchar cambios en los controles
-        redSlider.addEventListener('input', actualizarColor);
-        greenSlider.addEventListener('input', actualizarColor);
-        blueSlider.addEventListener('input', actualizarColor);
-
-        // Llamar a la función inicialmente para establecer el color inicial
-        actualizarColor();
     </script>
 </body>
 </html>
